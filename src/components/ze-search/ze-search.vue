@@ -18,11 +18,7 @@
 </template>
 
 <script>
-export default {
-  props: {
-    msg: String,
-  },
-};
+export default {};
 </script>
 
 <style scoped lang="scss">
