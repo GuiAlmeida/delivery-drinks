@@ -1,0 +1,23 @@
+body,
+html {
+  min-height: 100%;
+  width: 100%;
+  font-family: $font__main;
+  font-size: 16px;
+}
+#main {
+  transition: 0.3s;
+}
+.container {
+  font-family: $font__main;
+  font-weight: normal;
+  padding: 0 15px;
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+}
+
+b,
+strong {
+  font-weight: bold;
+}
