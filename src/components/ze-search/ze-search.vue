@@ -68,7 +68,6 @@ export default {
     position: relative;
     color: $secondary;
     font-weight: 300;
-    margin-top: 32px;
   }
   &__container-input {
     display: flex;
