@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header :class="{ change_color: scrollPosition > 200 }">
     <div class="container">
       <img alt="logo zé" src="../assets/logo_dark.svg" class="logo" />
       <nav>
@@ -11,7 +11,28 @@
     </div>
   </header>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      scrollPosition: null,
+    };
+  },
+  mounted() {
+    window.addEventListener("scroll", this.updateScroll);
+  },
+  methods: {
+    updateScroll() {
+      this.scrollPosition = window.scrollY;
+    },
+  },
+};
+</script>
+
 <style lang="scss">
+.change_color {
+  background-color: $primary;
+}
 header {
   display: flex;
   padding: 0.475rem 1rem;
