@@ -1,17 +1,22 @@
 <template>
-  <section>
-    <Search msg="Welcome to Your Vue.js App" />
-  </section>
+  <div>
+    <ze-search />
+    <ze-works />
+    <ze-app />
+  </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import Search from "@/components/ze-search/ze-search.vue";
+import zeSearch from "@/components/ze-search/ze-search.vue";
+import zeWorks from "@/components/ze-works/ze-works.vue";
+import zeApp from "@/components/ze-app/ze-app.vue";
 
 export default {
   name: "Home",
   components: {
-    Search,
+    zeSearch,
+    zeWorks,
+    zeApp,
   },
 };
 </script>

@@ -1,12 +1,14 @@
 <template>
   <header>
-    <img alt="logo zé" src="../assets/logo_dark.svg" class="logo" />
-    <nav>
-      <ul>
-        <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/about" class="btn btn--secondary">login</router-link></li>
-      </ul>
-    </nav>
+    <div class="container">
+      <img alt="logo zé" src="../assets/logo_dark.svg" class="logo" />
+      <nav>
+        <ul>
+          <li><router-link to="/">Home</router-link></li>
+          <li><router-link to="/about" class="btn btn--secondary">login</router-link></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 </template>
 <style lang="scss">
@@ -20,6 +22,8 @@ header {
   right: 0;
   height: 85px;
   align-items: center;
+  z-index: 999;
+
   p {
     margin-left: 1rem;
   }
@@ -27,6 +31,7 @@ header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    flex-direction: row;
   }
   .logo {
     height: 60px;
