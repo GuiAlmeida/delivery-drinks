@@ -15,6 +15,15 @@
       border: 2px solid $secondary;
     }
   }
+  &--primary {
+    background-color: $primary;
+    color: $secondary;
+    &:hover {
+      background-color: transparent;
+      color: $primary;
+      border: 2px solid $primary;
+    }
+  }
   &--largue {
     padding: 0.5rem 1.5rem;
     font-size: 1.25rem;

@@ -12,9 +12,10 @@ const routes = [
     meta: { title: "Zé Delivery: Entrega de bebidas geladas a preço baixo" },
   },
   {
-    path: "/about",
-    name: "About",
-    component: () => import("../views/About.vue"),
+    path: "/products",
+    name: "Products",
+    component: () => import("@/views/Products.vue"),
+    meta: { title: "Zé Delivery: Entrega de bebidas geladas a preço baixo" },
   },
 ];
 
@@ -28,7 +29,6 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   // seta o title dinamicamente
   document.title = to.meta.title;
-
   next();
 });
 

@@ -1,22 +1,32 @@
 <template>
   <header :class="{ change_color: scrollPosition > 200 }">
     <div class="container">
-      <img alt="logo zé" src="../assets/logo_dark.svg" class="logo" />
+      <logo class="logo" :type="scrollPosition > 200 ? 'white' : 'dark'" />
       <nav>
         <ul>
           <li><router-link to="/">Home</router-link></li>
-          <li><router-link to="/about" class="btn btn--secondary">login</router-link></li>
+          <li>
+            <router-link to="/about" class="btn" :class="scrollPosition > 200 ? 'btn--primary' : 'btn--secondary'">
+              login
+            </router-link>
+          </li>
         </ul>
       </nav>
     </div>
   </header>
 </template>
+
 <script>
+import logo from "@/components/icons/logo.vue";
+
 export default {
   data() {
     return {
       scrollPosition: null,
     };
+  },
+  components: {
+    logo,
   },
   mounted() {
     window.addEventListener("scroll", this.updateScroll);
@@ -31,7 +41,17 @@ export default {
 
 <style lang="scss">
 .change_color {
-  background-color: $primary;
+  background-color: $secondary;
+  svg {
+    fill: $off;
+  }
+  nav {
+    ul li {
+      a:not(.btn) {
+        color: $off;
+      }
+    }
+  }
 }
 header {
   display: flex;
