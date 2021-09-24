@@ -8,14 +8,15 @@
 #### Preview
 
 ![Preview](/public/screenshot.png)
+
+**[View Live Preview](https://ze-delivery-engineering-mbd50rmkk-guialmeida.vercel.app/)**
+
+
 ## Build Setup
 
 #### Requirements
 
 * Install `node 14.17.x` [download](https://nodejs.org/en/download/releases/)
-
-
-**[View Live Preview](https://ze-delivery-engineering-mbd50rmkk-guialmeida.vercel.app/)**
 
 ## Quick Overview
 
