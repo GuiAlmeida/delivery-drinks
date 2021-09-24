@@ -38,3 +38,7 @@ Runs the test watcher in an interactive mode.
 ### `npm run build` or `yarn build`
 
 Builds the app for production to the `dist` folder. It correctly bundles React in production mode and optimizes the build for the best performance.
+
+## Note
+
+When using the address of the challenge query the distributor `(PoC): Rua Américo Brasiliense, São Paulo` I noticed that the neighborhood information does not come correct from Google, only when searching for zip code `04715-002` which obtained the response correct.
