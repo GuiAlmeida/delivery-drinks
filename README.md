@@ -5,18 +5,17 @@
 - [Vuex](https://vuex.vuejs.org/)
 - [Axios](https://axios-http.com/)
 - [GraphQL](https://graphql.org/)
+#### Preview
 
+![Preview](/public/screenshot.png)
 ## Build Setup
 
 #### Requirements
 
 * Install `node 14.17.x` [download](https://nodejs.org/en/download/releases/)
-## Preview
-
-![Preview](/public/screenshot.png)
 
 
-**[View Live Preview](https://felipebluiz-zedelivery.netlify.app/)**
+**[View Live Preview](https://ze-delivery-engineering-mbd50rmkk-guialmeida.vercel.app/)**
 
 ## Quick Overview
 
