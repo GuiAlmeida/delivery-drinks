@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import { getCookies } from "@/helpers/cookies";
 
 Vue.use(VueRouter);
 
@@ -12,7 +13,7 @@ const routes = [
     meta: { title: "Zé Delivery: Entrega de bebidas geladas a preço baixo" },
   },
   {
-    path: "/products",
+    path: "/produtos",
     name: "Products",
     component: () => import("@/views/Products.vue"),
     meta: { title: "Zé Delivery: Entrega de bebidas geladas a preço baixo" },
@@ -27,8 +28,12 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  // seta o title dinamicamente
+  // set title page
   document.title = to.meta.title;
+
+  const userAddress = getCookies("userAddress");
+  if (to.path != "/" && !userAddress) return next("/");
+
   next();
 });
 

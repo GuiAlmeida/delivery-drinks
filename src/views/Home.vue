@@ -1,11 +1,3 @@
-<template>
-  <div>
-    <ze-search />
-    <ze-works />
-    <ze-app />
-  </div>
-</template>
-
 <script>
 import zeSearch from "@/components/ze-search/ze-search.vue";
 import zeWorks from "@/components/ze-works/ze-works.vue";
@@ -20,3 +12,11 @@ export default {
   },
 };
 </script>
+
+<template>
+  <div>
+    <ze-search />
+    <ze-works />
+    <ze-app />
+  </div>
+</template>

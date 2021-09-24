@@ -1,8 +1,14 @@
-import googleGeolocation from "./googleGeolocation";
+import search from "./search";
+import products from "./products";
+import loading from "./loading";
+import user from "./user";
 
 const storeData = {
   modules: {
-    googleGeolocation,
+    search,
+    products,
+    loading,
+    user,
   },
 };
 

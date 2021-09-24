@@ -1,23 +1,8 @@
-<template>
-  <header :class="{ change_color: scrollPosition > 200 }">
-    <div class="container">
-      <logo class="logo" :type="scrollPosition > 200 ? 'white' : 'dark'" />
-      <nav>
-        <ul>
-          <li><router-link to="/">Home</router-link></li>
-          <li>
-            <router-link to="/about" class="btn" :class="scrollPosition > 200 ? 'btn--primary' : 'btn--secondary'">
-              login
-            </router-link>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-</template>
-
 <script>
+import { mapState } from "vuex";
 import logo from "@/components/icons/logo.vue";
+import IconPin from "@/components/icons/icon-pin.vue";
+import { getCookies, removeCookies } from "@/helpers/cookies";
 
 export default {
   data() {
@@ -27,6 +12,18 @@ export default {
   },
   components: {
     logo,
+    IconPin,
+  },
+  computed: {
+    ...mapState({
+      logged: state => state.user.logged,
+    }),
+    currentRouteName() {
+      return this.$route.path;
+    },
+    userAddress() {
+      return JSON.parse(getCookies("userAddress"));
+    },
   },
   mounted() {
     window.addEventListener("scroll", this.updateScroll);
@@ -35,24 +32,44 @@ export default {
     updateScroll() {
       this.scrollPosition = window.scrollY;
     },
+    isLogof() {
+      removeCookies("userAddress");
+      this.$store.commit("user/SET_LOGGED", false);
+      this.$router.push("/");
+    },
   },
 };
 </script>
 
+<template>
+  <header :class="{ change_color: scrollPosition > 200, logged: logged }">
+    <div class="container">
+      <router-link to="/">
+        <logo class="logo" :type="scrollPosition > 200 ? 'white' : 'dark'" />
+      </router-link>
+      <nav>
+        <ul v-if="!logged">
+          <li><router-link to="/">Home</router-link></li>
+          <li>
+            <router-link to="/" class="btn" :class="scrollPosition > 200 ? 'btn--primary' : 'btn--secondary'">
+              login
+            </router-link>
+          </li>
+        </ul>
+        <div v-else class="address-wrapper">
+          <span class="address-wrapper__title">Receber agora em</span>
+          <span class="address-wrapper__address">
+            <IconPin />
+            {{ userAddress.address }}
+          </span>
+          <button type="button" class="btn-link" @click="isLogof">Alterar meu endereço</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+</template>
+
 <style lang="scss">
-.change_color {
-  background-color: $secondary;
-  svg {
-    fill: $off;
-  }
-  nav {
-    ul li {
-      a:not(.btn) {
-        color: $off;
-      }
-    }
-  }
-}
 header {
   display: flex;
   padding: 0.475rem 1rem;
@@ -77,6 +94,9 @@ header {
   .logo {
     height: 60px;
   }
+  &.logged {
+    box-shadow: inset 0 -1px 0 $off_2;
+  }
 }
 
 nav {
@@ -92,6 +112,73 @@ nav {
         color: $secondary;
       }
     }
+  }
+}
+
+.address-wrapper {
+  display: flex;
+  cursor: pointer;
+  border-radius: 8px;
+  flex-direction: column;
+  max-width: 240px;
+  position: relative;
+  &__title {
+    font-size: 14px;
+    color: $secondary;
+  }
+  &__address {
+    font-size: 14px;
+    color: $primary;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-top: 7px;
+    font-weight: 500;
+    padding-left: 16px;
+    svg {
+      transform: scale(0.59);
+      position: absolute;
+      top: 16px;
+      left: -7px;
+    }
+  }
+  .btn-link {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    color: $gray;
+    text-decoration: underline;
+    font-size: 12px;
+    width: auto;
+    text-align: left;
+    margin-top: 5px;
+    cursor: pointer;
+  }
+}
+.change_color {
+  background-color: $secondary;
+  svg {
+    fill: $off;
+  }
+  nav {
+    ul li {
+      a:not(.btn) {
+        color: $off;
+      }
+    }
+  }
+  .address-wrapper {
+    &__title {
+      color: $off;
+    }
+    &__address {
+      svg {
+        fill: $off;
+      }
+    }
+  }
+  .btn-link {
+    color: $off;
   }
 }
 </style>

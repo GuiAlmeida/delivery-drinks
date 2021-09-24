@@ -1,5 +1,5 @@
 <script>
-import { mapState } from "vuex";
+import IconPin from "@/components/icons/icon-pin.vue";
 
 export default {
   metaInfo() {
@@ -14,27 +14,24 @@ export default {
       ],
     };
   },
+  components: {
+    IconPin,
+  },
   data() {
     return {
+      address: null,
       searchResults: [],
       autocomplete: null,
+      googleGeolocation: null,
+      googlePlaces: "",
       loading: false,
       showDropdown: true,
-      googlePlaces: "",
-      address: null,
-      googleGeolocation: null,
     };
-  },
-  computed: {
-    ...mapState({
-      google: state => state.google,
-    }),
   },
   mounted() {
     this.$refs.address.addEventListener("input", e => {
       if (e.currentTarget.value == "") this.setEmpty();
     });
-    this.locatorButtonPressed();
   },
   methods: {
     // Init services google
@@ -74,54 +71,15 @@ export default {
 
     // set the mounted object based on the selected address
     setPlaceDetails(selected) {
-      const brokenDownAddress = {};
-      const map = {
-        political: "state",
-        postal_code: "postalCode",
-        country: "country",
-        street_number: "streetNumber",
-        route: "streetName",
-        sublocality_level_1: "neighborhood",
-        administrative_area_level_2: "city",
-        locality: "city1",
-        administrative_area_level_1: "state",
-      };
       this.googlePlaces.getDetails({ placeId: selected.place_id }, (place, status) => {
         if (status === window.google.maps.places.PlacesServiceStatus.OK) {
           this.showDropdown = false;
-          place.address_components.forEach(component => {
-            brokenDownAddress[map[component.types[0]]] = component.short_name;
-          });
+          const lat = place.geometry.location.lat();
+          const lng = place.geometry.location.lng();
+          const variable = { lat: lat, lng: lng, address: place.formatted_address };
+          this.$store.dispatch("search/setDistributor", variable);
         }
       });
-      console.log("brokenDownAddress", brokenDownAddress);
-    },
-
-    // get geolocation
-    locatorButtonPressed() {
-      navigator.geolocation.getCurrentPosition(
-        resp => {
-          this.setAddressLatLng(resp.coords.latitude, resp.coords.longitude);
-        },
-        error => {
-          console.log(error.message);
-        }
-      );
-    },
-
-    // set address based on geolocation
-    setAddressLatLng(lat, lng) {
-      const latlng = new window.google.maps.LatLng(lat, lng);
-      this.googleGeolocation
-        .geocode({ location: latlng })
-        .then(resp => {
-          if (resp) {
-            console.log("resp", resp.results[0].formatted_address);
-          } else {
-            alert("No results found");
-          }
-        })
-        .catch(e => console.log(e.message));
     },
   },
 };
@@ -139,13 +97,16 @@ export default {
     </h1>
     <form>
       <div class="search__container-input">
+        <span class="search__input-icon">
+          <IconPin />
+        </span>
         <input
           class="search__input"
           id="endereco"
           v-model="address"
           type="search"
           ref="address"
-          placeholder="Insira o endereço para ver os produtos"
+          placeholder="Insira o endereço ou o CEP para ver os produtos"
           @input="readChange"
         />
 
@@ -163,7 +124,7 @@ export default {
           </div>
         </div>
 
-        <button class="btn btn--secondary btn--largue">continuar</button>
+        <!-- <button type="button" class="btn btn--secondary btn--largue" @click="trySearchDistributor()">continuar</button> -->
       </div>
     </form>
   </section>
@@ -222,7 +183,7 @@ export default {
   }
   &__input {
     outline: none;
-    padding: 0.71rem 1rem;
+    padding: 0.71rem 1rem 0.71rem 2.5rem;
     font-size: 1rem;
     font-weight: 300;
     letter-spacing: 0.2px;
@@ -232,8 +193,13 @@ export default {
     border: 1px solid $secondary;
     width: 100%;
     @media screen and (min-width: 998px) {
-      width: 350px;
+      width: 430px;
     }
+  }
+  &__input-icon {
+    position: absolute;
+    top: 10px;
+    left: 8px;
   }
 
   &__dropdown-container {
@@ -243,7 +209,7 @@ export default {
     left: 0;
     width: 100%;
     background-color: #ffffff;
-    display: inline-block;
+    display: flex;
     height: max-content;
     border: 1px solid #e6e6e6;
     border-radius: 6px;
@@ -254,12 +220,14 @@ export default {
     text-decoration: none;
     margin-bottom: 0;
     padding: 1rem;
+    line-height: 1.4;
     color: lighten($secondary, 40%);
     cursor: pointer;
     white-space: normal;
     &:hover {
       background-color: #f8f9fa;
       color: $secondary;
+      border-radius: 6px;
     }
   }
   &__dropdown-item-loading {
