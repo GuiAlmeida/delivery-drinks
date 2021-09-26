@@ -11,13 +11,15 @@ const distributorFetch = async ({ commit }, variables) => {
 
 const setDistributor = async ({ dispatch, commit }, variables) => {
   setCookies("userAddress", variables, "1h");
+  store.commit("user/SET_ADDRESS", variables);
   store.commit("loading/SET_LOADING", true);
-  console.log('store', store)
+
   const variable = { pocSearchLong: JSON.stringify(variables.lng), pocSearchLat: JSON.stringify(variables.lat) };
   const data = await dispatch("distributorFetch", variable);
+
   if (data) {
     const variable = {
-      pocId: data.pocSearch[0].id,
+      pocId: data.pocSearch.length ? data.pocSearch[0].id : "",
       productsSearch: null,
       productsCategoryId: null,
     };

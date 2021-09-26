@@ -19,10 +19,15 @@ export default {
     }),
 
     productsFiltered() {
-      return this.products.filter(elem => {
-        if (!this.filter) return elem;
-        if (elem.category.title === this.filter) return elem;
-      });
+      const arr = this.products;
+      if (arr) {
+        return arr.filter(elem => {
+          if (!this.filter) return elem;
+          if (elem.category.title === this.filter) return elem;
+        });
+      } else {
+        return arr;
+      }
     },
   },
   mounted() {
@@ -31,7 +36,7 @@ export default {
   methods: {
     loadProducts() {
       const userAddress = getCookies("userAddress");
-      if (this.products.length === 0) {
+      if (this.products && this.products.length === 0) {
         if (userAddress) {
           this.$store.dispatch("search/setDistributor", JSON.parse(userAddress));
         }
@@ -49,7 +54,7 @@ export default {
   <section class="products">
     <div class="container">
       <div class="products__wrapper">
-        <div class="products__categories">
+        <div class="products__categories" v-if="productsFiltered">
           <div
             class="products__categories--item"
             v-for="categorie in categories"
@@ -61,7 +66,11 @@ export default {
           </div>
         </div>
 
-        <div class="products__empty" v-if="productsFiltered.length === 0">
+        <div class="products__empty" v-if="!productsFiltered">
+          <img src="@/assets/house.png" />
+          <p>Opa, estamos sem produtos para esté endereço!</p>
+        </div>
+        <div class="products__empty" v-if="productsFiltered && productsFiltered.length === 0">
           <img src="@/assets/house.png" />
           <p>Opa, estamos sem esses produtos no momento!</p>
         </div>

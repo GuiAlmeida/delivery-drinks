@@ -1,3 +1,4 @@
 export default () => ({
-   logged: false,
+  logged: false,
+  userAddress: {},
 });

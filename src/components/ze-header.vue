@@ -2,27 +2,26 @@
 import { mapState } from "vuex";
 import logo from "@/components/icons/logo.vue";
 import IconPin from "@/components/icons/icon-pin.vue";
-import { getCookies, removeCookies } from "@/helpers/cookies";
+import { removeCookies } from "@/helpers/cookies";
 
 export default {
   data() {
     return {
       scrollPosition: null,
+      position: 50,
     };
   },
   components: {
     logo,
-    IconPin,
+     IconPin,
   },
   computed: {
     ...mapState({
       logged: state => state.user.logged,
+      userAddress: state => state.user.userAddress,
     }),
     currentRouteName() {
       return this.$route.path;
-    },
-    userAddress() {
-      return JSON.parse(getCookies("userAddress"));
     },
   },
   mounted() {
@@ -35,23 +34,26 @@ export default {
     isLogof() {
       removeCookies("userAddress");
       this.$store.commit("user/SET_LOGGED", false);
-      this.$router.push("/");
+      this.$store.commit("user/SET_ADDRESS", {});
+      if (this.$router.history.current.path !== "/") {
+        this.$router.push("/");
+      }
     },
   },
 };
 </script>
 
 <template>
-  <header :class="{ change_color: scrollPosition > 200, logged: logged }">
+  <header :class="{ change_color: scrollPosition > position, logged: logged }">
     <div class="container">
-      <router-link to="/">
-        <logo class="logo" :type="scrollPosition > 200 ? 'white' : 'dark'" />
-      </router-link>
+      <span @click="isLogof()">
+        <logo class="logo" :type="scrollPosition > position ? 'white' : 'dark'" />
+      </span>
       <nav>
         <ul v-if="!logged">
           <li><router-link to="/">Home</router-link></li>
           <li>
-            <router-link to="/" class="btn" :class="scrollPosition > 200 ? 'btn--primary' : 'btn--secondary'">
+            <router-link to="/" class="btn" :class="scrollPosition > position ? 'btn--primary' : 'btn--secondary'">
               login
             </router-link>
           </li>
