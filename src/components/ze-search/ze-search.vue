@@ -177,7 +177,9 @@ export default {
     }
   }
   form {
-    width: 100%;
+    @media screen and (max-width: 600px) {
+       width: 100%;
+    }
   }
   &__title {
     z-index: 1;
