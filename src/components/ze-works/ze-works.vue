@@ -51,7 +51,7 @@
     display: grid;
     align-self: center;
     justify-self: center;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
     gap: 15px;
     text-align: center;
     @media screen and (min-width: 960px) {
@@ -91,8 +91,8 @@
       }
       a {
         color: lighten($secondary, 40%);
-        &:hover{
-           text-decoration: underline;
+        &:hover {
+          text-decoration: underline;
         }
       }
     }

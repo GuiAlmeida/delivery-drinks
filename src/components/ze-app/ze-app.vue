@@ -69,11 +69,17 @@
     gap: 15px;
     text-align: center;
     img {
-      max-width: 170px;
+      max-width: 130px;
+      @media screen and (min-width: 450px) {
+        max-width: 170px;
+      }
     }
   }
   &__image {
-    max-width: 400px;
+    max-width: 300px;
+    @media screen and (min-width: 960px) {
+      max-width: 400px;
+    }
   }
 }
 </style>

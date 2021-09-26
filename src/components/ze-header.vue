@@ -13,7 +13,7 @@ export default {
   },
   components: {
     logo,
-     IconPin,
+    IconPin,
   },
   computed: {
     ...mapState({
@@ -74,7 +74,7 @@ export default {
 <style lang="scss">
 header {
   display: flex;
-  padding: 0.475rem 1rem;
+  padding: 0;
   background: transparent;
   position: fixed;
   top: 0;
@@ -94,7 +94,10 @@ header {
     flex-direction: row;
   }
   .logo {
-    height: 60px;
+    height: 45px;
+    @media screen and (min-width: 960px) {
+      height: 60px;
+    }
   }
   &.logged {
     box-shadow: inset 0 -1px 0 $off_2;

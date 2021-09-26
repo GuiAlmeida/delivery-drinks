@@ -140,6 +140,7 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 0 15px;
   &::before {
     content: " ";
     width: 250px;
@@ -150,6 +151,12 @@ export default {
     left: 20px;
     background-position: center 300px;
     background-image: url("./images/beer_1.svg");
+    @media screen and (max-width: 1150px) {
+      width: 200px;
+    }
+    @media screen and (max-width: 800px) {
+      display: none;
+    }
   }
   &::after {
     content: " ";
@@ -162,17 +169,28 @@ export default {
     top: 40px;
     background-position: center 80px;
     background-image: url("./images/beer_2.svg");
+    @media screen and (max-width: 1150px) {
+      width: 200px;
+    }
+    @media screen and (max-width: 800px) {
+      display: none;
+    }
   }
-
+  form {
+    width: 100%;
+  }
   &__title {
     z-index: 1;
     z-index: 1;
-    font-size: 36px;
+    font-size: 28px;
     line-height: 44px;
     text-align: center;
     position: relative;
     color: $secondary;
     font-weight: 300;
+    @media screen and (min-width: 600px) {
+      font-size: 36px;
+    }
   }
   &__container-input {
     display: flex;
@@ -192,7 +210,7 @@ export default {
     border-radius: $radius;
     border: 1px solid $secondary;
     width: 100%;
-    @media screen and (min-width: 998px) {
+    @media screen and (min-width: 600px) {
       width: 430px;
     }
   }
