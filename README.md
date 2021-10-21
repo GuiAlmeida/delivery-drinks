@@ -1,10 +1,15 @@
-# Zé Delivery Frontend Challenge
+# Delivery Drinks
+
+O intuito deste projeto foi treinar alguns conheceitos em VueJS, ele é uma SPA inspirada no site <a href= "https://ze.delivery">Zé Delivery</a>. A API de consulta foi fornecida pela Zé, atualmente ela funciona apenas para o CEP: 04715-002.
+
+
 ### Built With
 
 - [VueJS](https://vuejs.org/)
 - [Vuex](https://vuex.vuejs.org/)
 - [Axios](https://axios-http.com/)
 - [GraphQL](https://graphql.org/)
+- [Google APIs](https://developers.google.com/maps)
 #### Preview
 
 ![Preview](/public/screenshot.png)
@@ -20,7 +25,7 @@
 
 ## Quick Overview
 
-Inside the project folder, you can run some commands:
+Dentro da pasta do projeto, você pode executar alguns comandos:
 
 ### `npm install` or `yarn install`
 
@@ -28,17 +33,13 @@ Install the necessary dependencies:
 
 ### `npm start` or `yarn start`
 
-Runs the app in development mode.
+Executa o aplicativo em modo de desenvolvimento.
 Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 
 ### `npm test` or `yarn test`
 
-Runs the test watcher in an interactive mode.
+Executar os testes
 
 ### `npm run build` or `yarn build`
 
-Builds the app for production to the `dist` folder. It correctly bundles React in production mode and optimizes the build for the best performance.
-
-## Note
-
-When using the address of the challenge query the distributor `(PoC): Rua Américo Brasiliense, São Paulo` I noticed that the neighborhood information does not come correct from Google, only when searching for zip code `04715-002` which obtained the response correct.
+Compila o aplicativo para produção na pasta `dist`. Ele agrupa corretamente o React no modo de produção e otimiza a construção para o melhor desempenho.

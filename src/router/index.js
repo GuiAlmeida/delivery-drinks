@@ -10,13 +10,13 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
-    meta: { title: "Zé Delivery: Entrega de bebidas geladas a preço baixo" },
+    meta: { title: "Delivery Drinks: Entrega de bebidas geladas a preço baixo" },
   },
   {
     path: "/produtos",
     name: "Products",
     component: () => import("@/views/Products.vue"),
-    meta: { title: "Zé Delivery: Entrega de bebidas geladas a preço baixo" },
+    meta: { title: "Delivery Drinks: Entrega de bebidas geladas a preço baixo" },
   },
 ];
 

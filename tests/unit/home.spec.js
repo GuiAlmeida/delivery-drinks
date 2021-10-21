@@ -21,7 +21,7 @@ export default function googleStub() {
 }
 
 import { shallowMount } from "@vue/test-utils";
-import zeSearch from "@/components/ze-search/ze-search.vue";
+import zeSearch from "@/components/search/search.vue";
 
 window.google = global.google = googleStub();
 

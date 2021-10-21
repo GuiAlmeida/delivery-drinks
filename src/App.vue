@@ -1,8 +1,8 @@
 <script>
 import { mapState } from "vuex";
 import Loading from "@/components/loading/loading.vue";
-import Header from "@/components/ze-header.vue";
-import Footer from "@/components/ze-footer.vue";
+import Header from "@/components/header.vue";
+import Footer from "@/components/footer.vue";
 
 export default {
   components: {

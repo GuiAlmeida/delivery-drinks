@@ -1,41 +1,41 @@
 <template>
-  <section class="ze-works">
+  <section class="works">
     <div class="container">
-      <div class="ze-works__content">
-        <div class="ze-works__item">
+      <div class="works__content">
+        <div class="works__item">
           <figure>
-            <img src="./images/delivery.png" alt="Zé Delivery - Onde você estiver" />
-            <h1 class="ze-works__title">
+            <img src="./images/delivery.png" alt="Delivery Drinks - Onde você estiver" />
+            <h1 class="works__title">
               Onde você estiver
             </h1>
-            <p class="ze-works__description">
+            <p class="works__description">
               Achamos as bebidas geladinhas na sua área e levamos até você!
             </p>
           </figure>
         </div>
-        <div class="ze-works__item">
+        <div class="works__item">
           <figure>
-            <img src="./images/favorite.png" alt="Zé Delivery - Só as favoritas" />
-            <h1 class="ze-works__title">Só as favoritas</h1>
-            <p class="ze-works__description">
+            <img src="./images/favorite.png" alt="Delivery Drinks - Só as favoritas" />
+            <h1 class="works__title">Só as favoritas</h1>
+            <p class="works__description">
               Você pode escolher entre cervejas, vinhos, água, energéticos, refrigerantes, salgadinhos e até gelo!
             </p>
           </figure>
         </div>
-        <div class="ze-works__item">
+        <div class="works__item">
           <figure>
-            <img src="./images/cellphone.png" alt="Zé Delivery - Só as favoritas" />
-            <h1 class="ze-works__title">Facilita seu brinde</h1>
-            <p class="ze-works__description">
+            <img src="./images/cellphone.png" alt="Delivery Drinks - Só as favoritas" />
+            <h1 class="works__title">Facilita seu brinde</h1>
+            <p class="works__description">
               Suas bebidas chegam geladinhas e super rápidas, prontas para brindar!
             </p>
           </figure>
         </div>
       </div>
-      <section class="ze-works__cities">
-        <h1 class="ze-works__cities--title">Explore por cidades</h1>
-        <ul class="ze-works__cities--list">
-          <li class="ze-works__cities--item" v-for="city in citys" :key="city.id">
+      <section class="works__cities">
+        <h1 class="works__cities--title">Explore por cidades</h1>
+        <ul class="works__cities--list">
+          <li class="works__cities--item" v-for="city in citys" :key="city.id">
             <a href="#">{{ city }}</a>
           </li>
         </ul>
@@ -45,7 +45,7 @@
 </template>
 
 <style lang="scss" scoped>
-.ze-works {
+.works {
   padding: 40px 0;
   &__content {
     display: grid;

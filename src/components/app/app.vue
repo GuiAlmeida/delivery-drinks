@@ -1,15 +1,15 @@
 <template>
-  <section class="ze-app">
+  <section class="app">
     <div class="container">
-      <div class="ze-app__content">
-        <div class="ze-app__column-left">
+      <div class="app__content">
+        <div class="app__column-left">
           <h1>
             Já baixou o app?
           </h1>
           <p>
             Entregamos onde estiver, através de nosso parceiro mais próximo de você.
           </p>
-          <div class="ze-app__badge">
+          <div class="app__badge">
             <a target="_blank" rel="noreferrer noopener" href="https://go.onelink.me/app/488889bc">
               <img src="./images/google-play-badge-1.png" />
             </a>
@@ -18,8 +18,8 @@
             </a>
           </div>
         </div>
-        <div class="ze-app__column-right">
-          <img class="ze-app__image" src="./images/mockups_2.png" />
+        <div class="app__column-right">
+          <img class="app__image" src="./images/mockups_2.png" />
         </div>
       </div>
     </div>
@@ -27,7 +27,7 @@
 </template>
 
 <style lang="scss" scoped>
-.ze-app {
+.app {
   width: 100%;
   background: $primary;
   padding: 60px 0;

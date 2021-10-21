@@ -1,6 +1,6 @@
 <template>
-  <img src="@/assets/logo_dark.png" v-if="type == 'dark'" />
-  <img src="@/assets/logo.png" v-else />
+  <img src="@/assets/logo_2.svg" v-if="type == 'dark'" />
+  <img src="@/assets/logo_white.svg" v-else />
 </template>
 
 <script>
