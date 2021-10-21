@@ -12,7 +12,7 @@ O intuito deste projeto foi treinar alguns conheceitos em VueJS, ele é uma SPA 
 - [Google APIs](https://developers.google.com/maps)
 #### Preview
 
-![Preview](![image](https://user-images.githubusercontent.com/5199435/138205324-2d8838a1-6740-454e-88e5-5891c346530f.png))
+![image](https://user-images.githubusercontent.com/5199435/138205361-7a66e94e-23b6-4bf9-866a-f9cfe71c16fe.png)
 
 **[View Live Preview](https://ze-delivery-engineering-mbd50rmkk-guialmeida.vercel.app/)**
 
