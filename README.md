@@ -1,6 +1,6 @@
 # Delivery Drinks
 
-O intuito deste projeto foi treinar alguns conheceitos em VueJS, ele é uma SPA inspirada no site <a href= "https://ze.delivery">Zé Delivery</a>. A API de consulta foi fornecida pela Zé, atualmente ela funciona apenas para o CEP: 04715-002.
+O intuito deste projeto foi treinar alguns conheceitos em VueJS, ele é uma SPA inspirada no site <a href= "https://ze.delivery">Zé Delivery</a>. A API de consulta foi fornecida pelo Zé, atualmente ela funciona apenas para o CEP: 04715-002.
 
 
 ### Built With
