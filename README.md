@@ -14,7 +14,7 @@ O intuito deste projeto foi treinar alguns conheceitos em VueJS, ele é uma SPA 
 
 ![image](https://user-images.githubusercontent.com/5199435/138205361-7a66e94e-23b6-4bf9-866a-f9cfe71c16fe.png)
 
-**[View Live Preview](https://ze-delivery-engineering-mbd50rmkk-guialmeida.vercel.app/)**
+**[View Live Preview](https://delivery-drinks.vercel.app/)**
 
 
 ## Build Setup
